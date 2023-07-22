@@ -1,29 +1,24 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Header from "./Header";
 import { formatUserName } from "./utils";
 
-// Sample response from user endpoint
-// Let's create a type for this
-const SAMPLE_USER = {
-  firstName: "Rebekah",
-  lastName: "CK",
-  username: "rebekah",
-  userId: 123456,
-  recipes: [1111, 2222],
-};
-
 // Sample response from recipe endpoint
 // Let's create a type for this
-const RECIPE_ONE = {
+type Recipe = {
+  recipeId: number;
+  title: string;
+  ingredients: Array<string>;
+  instructions: string;
+};
+const RECIPE_ONE: Recipe = {
   recipeId: 1111,
   title: "Chicken and Rice",
   ingredients: ["tomato", "chicken", "rice"],
   instructions: "Here are all of the instructions",
 };
 
-const RECIPE_TWO = {
+const RECIPE_TWO: Recipe = {
   recipeId: 2222,
   title: "Strawberry Tart",
   ingredients: ["strawberries", "flour", "butter"],
@@ -32,28 +27,42 @@ const RECIPE_TWO = {
 
 // Sample response from recipes endpoint
 // Let's create a type for this
-const RECIPES = [RECIPE_ONE, RECIPE_TWO];
+const RECIPES: Array<Recipe> = [RECIPE_ONE, RECIPE_TWO];
+console.log(RECIPES);
+
+// Sample response from user endpoint
+// Let's create a type for this
+type User = {
+  firstName?: string;
+  lastName?: string;
+  username: string;
+  userId: number;
+  recipes: Array<Recipe>;
+};
+const SAMPLE_USER: User = {
+  firstName: "Rebekah",
+  lastName: "CK",
+  username: "rebekah",
+  userId: 123456,
+  recipes: RECIPES,
+};
+
+console.log(SAMPLE_USER);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {/* let's convert this component to typescript */}
-        <Header label={"Here is my app"} />
-        {/* let's convert this function to typescript */}
-        <p>
-          Hello, {formatUserName(SAMPLE_USER.firstName, SAMPLE_USER.lastName)}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* let's convert this component to typescript */}
+      <Header label={"Here is my app"} />
+      {/* let's convert this function to typescript */}
+      <p>
+        Hello,{" "}
+        {formatUserName(
+          SAMPLE_USER.firstName,
+          SAMPLE_USER.lastName,
+          SAMPLE_USER.username
+        )}
+      </p>
     </div>
   );
 }
