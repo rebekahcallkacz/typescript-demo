@@ -1,24 +1,24 @@
 import React from "react";
-import "./App.css";
 import Header from "./Header";
 import { formatUserName } from "./utils";
+import Recipe from "./Recipe";
 
 // Sample response from recipe endpoint
 // Let's create a type for this
-type Recipe = {
+type TRecipe = {
   recipeId: number;
   title: string;
   ingredients: Array<string>;
   instructions: string;
 };
-const RECIPE_ONE: Recipe = {
+const RECIPE_ONE: TRecipe = {
   recipeId: 1111,
   title: "Chicken and Rice",
   ingredients: ["tomato", "chicken", "rice"],
   instructions: "Here are all of the instructions",
 };
 
-const RECIPE_TWO: Recipe = {
+const RECIPE_TWO: TRecipe = {
   recipeId: 2222,
   title: "Strawberry Tart",
   ingredients: ["strawberries", "flour", "butter"],
@@ -27,8 +27,7 @@ const RECIPE_TWO: Recipe = {
 
 // Sample response from recipes endpoint
 // Let's create a type for this
-const RECIPES: Array<Recipe> = [RECIPE_ONE, RECIPE_TWO];
-console.log(RECIPES);
+const RECIPES: Array<TRecipe> = [RECIPE_ONE, RECIPE_TWO];
 
 // Sample response from user endpoint
 // Let's create a type for this
@@ -37,7 +36,7 @@ type User = {
   lastName?: string;
   username: string;
   userId: number;
-  recipes: Array<Recipe>;
+  recipes: Array<TRecipe>;
 };
 const SAMPLE_USER: User = {
   firstName: "Rebekah",
@@ -47,14 +46,10 @@ const SAMPLE_USER: User = {
   recipes: RECIPES,
 };
 
-console.log(SAMPLE_USER);
-
 function App() {
   return (
     <div className="App">
-      {/* let's convert this component to typescript */}
       <Header label={"Here is my app"} />
-      {/* let's convert this function to typescript */}
       <p>
         Hello,{" "}
         {formatUserName(
@@ -63,6 +58,9 @@ function App() {
           SAMPLE_USER.username
         )}
       </p>
+      {RECIPES.map((recipe) => (
+        <Recipe recipe={recipe} />
+      ))}
     </div>
   );
 }
