@@ -1,6 +1,8 @@
-import { React } from "react";
+import  React  from "react";
 
-const IngredientList = ({ ingredients }) => (
+type IngredientListProps = { 
+  ingredients: Array<string>};
+const IngredientList = ({ ingredients }:IngredientListProps) => (
   <>
     <p>Ingredients</p>
     <ul>

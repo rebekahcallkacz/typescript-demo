@@ -5,7 +5,7 @@ import Recipe from "./Recipe";
 
 // Sample response from recipe endpoint
 // Let's create a type for this
-type TRecipe = {
+export type TRecipe = {
   recipeId: number;
   title: string;
   ingredients: Array<string>;
