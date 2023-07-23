@@ -3,25 +3,42 @@ import Header from "./Header";
 import { formatUserName } from "./utils";
 import Recipe from "./Recipe";
 
+
 // Sample response from recipe endpoint
 // Let's create a type for this
-type TRecipe = {
+export type TIngredient = {
+  ingredient: string;
+  quantity: number | string;
+};
+export type TRecipe = {
   recipeId: number;
   title: string;
-  ingredients: Array<string>;
+  ingredients: Array<TIngredient>;
   instructions: string;
 };
+    const RECIPE_ONE_INGREDIENTS: Array<TIngredient> = [
+        { ingredient: "tomato", quantity: 1 },
+        { ingredient: "chicken", quantity: "1 pound" },
+        { ingredient: "rice", quantity: "1 cup" }
+    ]
+    const RECIPE_TWO_INGREDIENTS: Array<TIngredient> = [
+        { ingredient: "strawberries", quantity: "1 quart" },
+        { ingredient: "flour", quantity: "1 cup" },
+        { ingredient: "butter", quantity: "1/2 cup" }
+    ]
+    
+
 const RECIPE_ONE: TRecipe = {
   recipeId: 1111,
   title: "Chicken and Rice",
-  ingredients: ["tomato", "chicken", "rice"],
+  ingredients: RECIPE_ONE_INGREDIENTS,
   instructions: "Here are all of the instructions",
 };
 
 const RECIPE_TWO: TRecipe = {
   recipeId: 2222,
   title: "Strawberry Tart",
-  ingredients: ["strawberries", "flour", "butter"],
+  ingredients: RECIPE_TWO_INGREDIENTS,
   instructions: "Here are all of the instructions",
 };
 
