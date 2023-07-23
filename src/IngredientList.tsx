@@ -1,15 +1,15 @@
 import  React  from "react";
+import {TIngredient} from "./App"
 
 type IngredientListProps = { 
-  ingredients: Array<string>};
-const IngredientList = ({ ingredients }:IngredientListProps) => (
+  ingredient: TIngredient};
+const IngredientList = ({ ingredient }:IngredientListProps) => (
   <>
-    <p>Ingredients</p>
-    <ul>
-      {ingredients.map((ingredient) => (
-        <li key={ingredient}>{ingredient}</li>
-      ))}
-    </ul>
+
+    <li>
+      <span>{ingredient.ingredient} {ingredient.quantity}</span>
+    </li>
+    
   </>
 );
 
