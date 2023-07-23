@@ -1,12 +1,9 @@
 import  React  from "react";
 
 import IngredientList from "./IngredientList";
+import {TRecipe} from "./App"
 
-type RecipeProps = { recipe: {
-  recipeId: number;
-  title: string;
-  ingredients: Array<string>;
-  instructions: string}};
+type RecipeProps = { recipe: TRecipe};
 
 const Recipe = ({ recipe }: RecipeProps) => (
   <>
