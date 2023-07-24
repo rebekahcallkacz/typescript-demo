@@ -1,27 +1,65 @@
-import React from "react";
 import Header from "./Header";
 import { formatUserName } from "./utils";
 import Recipe from "./Recipe";
 
 // Sample response from recipe endpoint
 // Let's create a type for this
-type TRecipe = {
+export type TRecipe = {
   recipeId: number;
   title: string;
-  ingredients: Array<string>;
+  ingredients: Array<TIngredient>;
   instructions: string;
 };
+
+export type TIngredient = {
+  id: number;
+  name: string;
+  quantity?: string | number;
+}
+
 const RECIPE_ONE: TRecipe = {
   recipeId: 1111,
   title: "Chicken and Rice",
-  ingredients: ["tomato", "chicken", "rice"],
+  ingredients: [
+    {
+      id: 1,
+      name: "tomato",
+      quantity: 1
+    },
+    {
+      id: 2,
+      name: "chicken",
+      quantity: "200 gram"
+    },
+    {
+      id: 3,
+      name: "rice",
+      quantity: " 1 cup"
+    },
+  ],
   instructions: "Here are all of the instructions",
 };
 
 const RECIPE_TWO: TRecipe = {
   recipeId: 2222,
   title: "Strawberry Tart",
-  ingredients: ["strawberries", "flour", "butter"],
+  ingredients: [
+    {
+      id: 1,
+      name: "strawberries",
+      quantity: 20
+    },
+    {
+      id: 2,
+      name: "flour",
+      quantity: "1 cup"
+    },
+    {
+      id: 3,
+      name: "butter",
+      quantity: " 1/4 cup"
+    },
+  ],
   instructions: "Here are all of the instructions",
 };
 
@@ -59,7 +97,7 @@ function App() {
         )}
       </p>
       {RECIPES.map((recipe) => (
-        <Recipe recipe={recipe} />
+        <Recipe key={recipe.recipeId} recipe={recipe} />
       ))}
     </div>
   );
