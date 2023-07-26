@@ -1,9 +1,9 @@
 import { TIngredient } from "./App";
 import Ingredient from "./Ingredient";
 
-type IngredientListProp = { ingredients: Array<TIngredient> }
+type TIngredientListProp = { ingredients: Array<TIngredient> }
 
-const IngredientList = ({ ingredients }: IngredientListProp) => (
+const IngredientList = ({ ingredients }: TIngredientListProp) => (
   <>
     <p>Ingredients</p>
     <ul>

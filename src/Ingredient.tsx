@@ -1,8 +1,8 @@
 import { TIngredient } from "./App";
 
-type IngredientProp = { ingredient: TIngredient }
+type TIngredientProp = { ingredient: TIngredient }
 
-const Ingredient = ({ ingredient }: IngredientProp) => (
+const Ingredient = ({ ingredient }: TIngredientProp) => (
     <>
         <li>{ingredient.name} -  {ingredient.quantity}</li>
     </>
